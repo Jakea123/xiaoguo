@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>下载页面</title>
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/jNotify.css">
+</head>
+<body>
+	<div class="bg">
+		<img src="images/download.png" alt="">
+	    <div id="download">
+	    	<a href>IOS版下载</a></div>
+	</div>
+	<div class="shades"></div>
+    <img class='openHint' src="" alt="" />
+</body>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script>
+    /*function applink(){
+        window.location = 'com.baoyi.YiQianBao';//唤醒app的接口
+            var clickedAt = +new Date;
+            //console.log(clickedAt);
+            setTimeout(function(){
+                !window.document.webkitHidden && setTimeout(function(){
+                if (+new Date - clickedAt < 2000){
+                    window.location = 'https://itunes.apple.com/cn/app/%E6%98%93%E9%92%B1%E5%AE%9D/id1164008363?mt=8';//app的下载地址
+                 }
+                }, 100);
+            }, 100)
+    }
+
+    applink();*/
+	var u = navigator.userAgent;
+    //是否是android浏览器
+    //var isAndroid = u.indexOf('Android') > -1;
+    //是否是ios浏览器
+    var isIos = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+    if(isIos){
+        $(".openHint").attr("src","images/safari.png")
+
+        $("#download a").attr("href","https://itunes.apple.com/app/id1192750817");
+    }
+
+
+    function is_weixn(){
+        var ua = navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    if(is_weixn()){
+        $(".shades").css({display:"block"})
+        $(".openHint").css({display:"block"})
+    }else{
+        $(".shades").css({display:"none"})
+        $(".openHint").css({display:"none"})
+    }
+</script>
+</html>
